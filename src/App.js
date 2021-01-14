@@ -8,6 +8,7 @@ import FavoritesSearchBar from './components/FavoritesSearchBar/FavoritesSearchB
 import { VideoContext } from './context/videoContext';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
+import Footer from './components/Footer/Footer';
 
 import { Container, Segment } from 'semantic-ui-react';
 
@@ -39,6 +40,7 @@ const App = () => {
 					</Route>
 				</Switch>
 				<ScrollToTop />
+				<Footer />
 			</div>
 		</Router>
 	);
