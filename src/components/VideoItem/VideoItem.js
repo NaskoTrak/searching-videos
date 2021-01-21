@@ -6,7 +6,7 @@ import styles from './VideoItem.module.css';
 
 const VideoItem = ({ video }) => {
 	const [openModal, setOpenModal] = useState(false);
-	const { dispatch } = useContext(VideoContext);
+	const { state, dispatch } = useContext(VideoContext);
 
 	const openModalFunc = () => {
 		setOpenModal(true);
@@ -52,12 +52,14 @@ const VideoItem = ({ video }) => {
 				onClick={() => openModalFunc()}
 			>
 				<Image src={video.thumbnail} alt={video.title} />
-				<Label
-					as={'a'}
-					corner={'left'}
-					icon={video.isBookmarked ? 'star' : 'star outline'}
-					onClick={handleFavoritesIcon}
-				/>
+				{state.isLogged && (
+					<Label
+						as={'a'}
+						corner={'left'}
+						icon={video.isBookmarked ? 'star' : 'star outline'}
+						onClick={handleFavoritesIcon}
+					/>
+				)}
 				<Label as={'a'} corner={'right'} icon={getSourceIcon(video.source)} />
 				<Header as="h5">{video.title}</Header>
 			</Segment>

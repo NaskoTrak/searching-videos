@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Modal, Icon } from 'semantic-ui-react';
+import { VideoContext } from '../../context/videoContext';
 
 const SelectedVideo = (props) => {
+	const { state } = useContext(VideoContext);
+
 	return (
 		<Modal
 			closeIcon
@@ -15,13 +18,15 @@ const SelectedVideo = (props) => {
 				</div>
 			</Modal.Content>
 			<Modal.Actions>
-				<Icon
-					className={props.favoriteChecked ? 'star' : 'star outline'}
-					link
-					onClick={props.handleFavoritesIcon}
-					size="big"
-					style={{ float: 'left' }}
-				/>
+				{state.isLogged && (
+					<Icon
+						className={props.favoriteChecked ? 'star' : 'star outline'}
+						link
+						onClick={props.handleFavoritesIcon}
+						size="big"
+						style={{ float: 'left' }}
+					/>
+				)}
 				<Button color="black" onClick={() => props.close()}>
 					Close
 				</Button>
